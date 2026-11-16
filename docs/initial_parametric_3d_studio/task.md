@@ -1,0 +1,26 @@
+# タスクリスト: パラメトリック3Dモデル生成スタジオ初期構築
+
+- [x] Git初期化・GitHubリポジトリ作成 (`baby4pon/parametric-3d-studio`)・Issue #1 起票・作業ブランチ作成
+- [x] Vite + TypeScript + Three.js + JSZip 環境セットアップ (`package.json`, `tsconfig.json`, `index.html`, `public/llms.txt`)
+- [x] 3Dジオメトリ基盤 (`src/types.ts`, `src/tools/geometryUtils.ts`) の実装
+- [x] 厳選6種のパラメトリック3Dジェネレーター実装
+  - [x] `divided-box-pro`（仕切り付きボックス Pro）
+  - [x] `gridfinity-bin`（Gridfinity 収納ビン）
+  - [x] `gridfinity-baseplate`（Gridfinity ベースプレート）
+  - [x] `opengrid-board`（openGrid 壁面収納ボード）
+  - [x] `wall-hook-holder`（多目的フック・ツールホルダー）
+  - [x] `desk-organizer-tray`（ケーブル＆ガジェットスタンド）
+- [x] 3Dビューポート＆ギミック実装
+  - [x] `sceneManager.ts`（ビルドプレート、カメラプリセット、エッジ輪郭線表示）
+  - [x] `dimensionOverlay.ts`（3D寸法線・補助線・数値ラベル表示）
+  - [x] `iphoneModel.ts`（実寸iPhone 16比較モデル、横置き/縦置き切替）
+- [x] 入出力・連携モジュール実装
+  - [x] `stlExporter.ts`（Z-upミリメートル バイナリSTL出力）
+  - [x] `threemfCodec.ts`（3MF出力・JSONメタデータ埋め込み・3MF読み込み復元）
+  - [x] `urlAndAiParser.ts`（URLクエリ双方向同期・ローカル自然言語スマートパーサー）
+- [x] UI＆デザイン実装
+  - [x] `style.css`（イエロー×ハザードストライプ・角丸なし・ダーク/ライトテーマ）
+  - [x] `renderHome.ts`（ツール一覧、検索、カテゴリ、3MFドロップゾーン、AI生成モーダル）
+  - [x] `renderEditor.ts`（フルスクリーンCAD画面、長押し連続増減、2D仕切り結合エディタ、スライス推奨設定、Undo/Redo）
+- [x] 動作検証・ビルドチェック・ブラウザ動作確認
+- [x] ドキュメント更新 (`walkthrough.md`)・コミット・プッシュ・PR作成 (`Closes #1`)

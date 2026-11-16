@@ -1,0 +1,78 @@
+# Parametric 3D Studio - AI Parameter Specification (llms.txt)
+
+このサイトは、URLクエリパラメータを指定するだけで3Dプリンター用データ（3MF / STL）を生成するブラウザ完結型パラメトリックCADスタジオです。
+ユーザーから「〇〇の箱を作って」「Gridfinityのケースを作って」等の依頼を受けたら、以下の仕様に従いURLを生成して案内してください。
+
+## 基本URL形式
+`<BASE_URL>/?tool=<TOOL_ID>&<PARAM_KEY>=<VALUE>...`
+
+例:
+`http://localhost:5173/?tool=divided-box-pro&w=200&d=100&h=50&cols=3&rows=2&pattern=rib&lid=both`
+
+---
+
+## 利用可能なツールID (`tool`) とパラメータ
+
+### 1. `divided-box-pro` (仕切り付きボックス Pro)
+- `w`: 外寸 幅 mm (30〜300, default: 140)
+- `d`: 外寸 奥行 mm (30〜300, default: 95)
+- `h`: 外寸 高さ mm (15〜200, default: 45)
+- `cols`: 横の列数 (1〜10, default: 3)
+- `rows`: 縦の行数 (1〜10, default: 2)
+- `wall`: 外壁厚 mm (1.2〜6, default: 2.0)
+- `bottom`: 底板厚 mm (1.2〜6, default: 2.0)
+- `divWall`: 仕切り厚 mm (0.8〜4, default: 1.4)
+- `radius`: 外角丸半径 mm (0〜20, default: 4.0)
+- `stack`: スタッキングリップ (`none` | `lip`, default: `none`)
+- `pattern`: 外壁テクスチャ (`flat` | `rib` | `knurl` | `hex`, default: `flat`)
+- `lid`: 蓋オプション (`none` | `lid` | `both`, default: `none`)
+- `merged`: 削除した仕切り壁キーのカンマ区切り (例: `v:0:0,h:1:0`)
+
+### 2. `gridfinity-bin` (Gridfinity 収納ビン 42mm規格)
+- `gx`: 横グリッド数 (1〜6, default: 2) — 1U = 42mm
+- `gy`: 縦グリッド数 (1〜6, default: 1) — 1U = 42mm
+- `gu`: 高さユニット数 (2〜12, default: 6) — 1U = 7mm
+- `cols`: 内部横仕切り数 (1〜6, default: 2)
+- `rows`: 内部縦仕切り数 (1〜4, default: 1)
+- `wall`: 外壁厚 mm (1.2〜3.2, default: 1.6)
+- `lip`: 積み重ねリップ (`1` | `0`, default: `1`)
+- `label`: ラベル棚 (`1` | `0`, default: `1`)
+- `scoop`: 底面指入れスロープ (`1` | `0`, default: `1`)
+- `magnets`: 底面φ6.5mmマグネット穴 (`1` | `0`, default: `0`)
+
+### 3. `gridfinity-baseplate` (Gridfinity ベースプレート)
+- `gx`: 横グリッド数 (1〜6, default: 3)
+- `gy`: 縦グリッド数 (1〜6, default: 3)
+- `style`: プレート形式 (`thin` | `weighted`, default: `thin`)
+- `padX`: 左右外周スペーサー余白 mm (0〜40, default: 0)
+- `padY`: 前後外周スペーサー余白 mm (0〜40, default: 0)
+- `magnets`: マグネット穴 (`1` | `0`, default: `0`)
+
+### 4. `opengrid-board` (openGrid 壁面収納ボード)
+- `cols`: 横セル数 (2〜10, default: 5)
+- `rows`: 縦セル数 (2〜10, default: 4)
+- `pitch`: セルピッチ mm (`25` | `28` | `30`, default: `28`)
+- `thickness`: 板厚 mm (3〜10, default: 5)
+- `holeType`: 穴形状 (`square` | `round` | `hex`, default: `square`)
+- `screwHoles`: 四隅皿ネジ穴 (`1` | `0`, default: `1`)
+- `standoff`: 裏面スペーサー脚 mm (0〜12, default: 4)
+
+### 5. `wall-hook-holder` (多目的フック・ツールホルダー)
+- `width`: フック幅 mm (12〜80, default: 24)
+- `hookDepth`: 懐奥行 mm (15〜120, default: 40)
+- `backHeight`: 背板高さ mm (25〜120, default: 50)
+- `tipHeight`: 先端返し高さ mm (8〜60, default: 18)
+- `thickness`: 全体厚み mm (3〜10, default: 5)
+- `angle`: フック開き角度 度 (75〜115, default: 90)
+- `mountType`: 固定方式 (`screw` | `tape` | `clamp`, default: `screw`)
+- `clampGap`: クランプ天板厚 mm (10〜50, default: 25)
+
+### 6. `desk-organizer-tray` (ケーブル＆ガジェットスタンド)
+- `w`: 全体幅 mm (80〜240, default: 150)
+- `d`: 全体奥行 mm (60〜180, default: 110)
+- `trayH`: 前部トレイ高さ mm (12〜40, default: 18)
+- `slots`: スタンドスロット数 (1〜4, default: 2)
+- `slotGap`: スロット溝幅 mm (8〜24, default: 13)
+- `backH`: 背面サポート高さ mm (25〜90, default: 48)
+- `tilt`: 立てかけ傾斜角 度 (5〜25, default: 12)
+- `cableSlit`: 背面ケーブル通しスリット (`1` | `0`, default: `1`)
